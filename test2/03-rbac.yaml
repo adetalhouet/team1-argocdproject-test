@@ -28,7 +28,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: test2
-    namespace: team2-dev
+    namespace: team1-dev
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -40,7 +40,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: test2
-  namespace: team2-dev
+  namespace: team1-dev
 spec:
   template:
     spec:

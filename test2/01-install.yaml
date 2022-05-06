@@ -7,22 +7,22 @@ metadata:
     openshift.io/node-selector: ""
   labels:
     openshift.io/cluster-monitoring: "true"
-  name: team2-dev
+  name: team1-dev
 ---
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   name: local-operator-group
-  namespace: team2-dev
+  namespace: team1-dev
 spec:
   targetNamespaces:
-    - team2-dev
+    - team1-dev
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: local-storage-operators
-  namespace: team2-dev
+  name: local-storage-operator
+  namespace: team1-dev
 spec:
   channel: "stable"
   installPlanApproval: Automatic
