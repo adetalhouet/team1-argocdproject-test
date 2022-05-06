@@ -1,14 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    # any node can use the local storage operator
-    openshift.io/node-selector: ""
-  labels:
-    openshift.io/cluster-monitoring: "true"
-  name: team1-dev
----
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
