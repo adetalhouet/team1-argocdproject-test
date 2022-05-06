@@ -9,9 +9,17 @@ spec:
       server: '*'
   roles:
     - groups:
-        - team1
+        - team1-admin
       name: team1-admin
       policies:
         - 'p, proj:team1:team1-admin, applications, *, team1/*, allow'
+    - groups:
+        - team1-dev
+      name: team1-dev
+      policies:
+        - 'p, proj:team1:team1-dev, applications, get, team1/*, allow'
+        - 'p, proj:team1:team1-dev, applications, sync, team1/*, allow'
+        - 'p, proj:team1:team1-dev, applications, action, team1/*, allow'
+        - 'p, proj:team1:team1-dev, applications, delete, team1/*, allow'
   sourceRepos:
     - 'https://github.com/adetalhouet/team1-*'
