@@ -15,7 +15,7 @@ spec:
       - kind: Group
         name: team1-admin
     validate:
-      message: "For anyone `team1-admin` member, creation of ArgoCD Application must be against the `team1` AppProject."
+      message: "For any `team1-admin` member, creation of ArgoCD Application must be against the `team1` AppProject."
       pattern:
         spec:
           project: team1
