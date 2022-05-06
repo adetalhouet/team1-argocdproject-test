@@ -34,4 +34,4 @@ roleRef:
   name: gitop-create-application
 subjects:
   - kind: Group
-    name: team1-dev
+    name: team1-admin

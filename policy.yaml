@@ -1,7 +1,7 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: restrict-to-argoproject
+  name: restrict-team1-to-its-appproject
 spec:
   validationFailureAction: enforce
   background: false
@@ -13,9 +13,9 @@ spec:
         - Application
       subjects:
       - kind: Group
-        name: team1-dev
+        name: team1-admin
     validate:
-      message: "Creation of ArgoCD Application must be against the `team1` AppProject for anything in `team1-*`."
+      message: "For anyone `team1-admin` member, creation of ArgoCD Application must be against the `team1` AppProject."
       pattern:
         spec:
           project: team1
