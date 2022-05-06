@@ -1,0 +1,17 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: team1-test
+  namespace: openshift-gitops
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: team1-dev
+  project: team1
+  source:
+    path: test2
+    repoURL: 'https://github.com/adetalhouet/team1-argocdproject-test'
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
