@@ -1,0 +1,67 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  name: test2
+rules:
+  # this is for the 00-presync-create-cert-cm-job
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - list
+      - create
+      - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: test2
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: test2
+subjects:
+  - kind: ServiceAccount
+    name: test2
+    namespace: team1-dev
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: test2
+  namespace: team1-dev
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test2
+  namespace: team1-dev
+spec:
+  template:
+    spec:
+      containers:
+        - resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+          image: registry.redhat.io/openshift4/ose-cli:v4.4
+          command:
+            - /bin/bash
+            - -c
+            - |
+              oc get secrets -n team1-dev
+          imagePullPolicy: Always
+          name: presync-create-cert-cm-job
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      serviceAccount: test2
+      serviceAccountName: test2
+      terminationGracePeriodSeconds: 30
