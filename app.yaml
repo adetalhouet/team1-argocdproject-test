@@ -7,7 +7,7 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: team1-dev
-  project: team1
+  project: default
   source:
     path: test2
     repoURL: 'https://github.com/adetalhouet/team1-argocdproject-test'
