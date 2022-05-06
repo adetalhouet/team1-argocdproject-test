@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team1
+  namespace: openshift-gitops
+spec:
+  destinations:
+    - namespace: team1-*
+      server: '*'
+  roles:
+    - groups:
+        - team1
+      name: team1-admin
+      policies:
+        - 'p, proj:team1:team1-admin, applications, *, team1/*, allow'
+  sourceRepos:
+    - 'https://github.com/adetalhouet/team1-*'
