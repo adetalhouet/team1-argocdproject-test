@@ -1,4 +1,5 @@
 
+## Can't create ns with Argo - needs to be created before-hand
 
 ## Wrong project
 
